@@ -4,6 +4,7 @@ import AppHeader from "./AppHeader.vue";
 import AppFooter from "./AppFooter.vue";
 import AssistantPanel from "./AssistantPanel.vue";
 import TextEditor from "./TextEditor.vue";
+import ClickCounter from "./ClickCounter.vue";
 
 const userName = ref("");
 </script>
@@ -14,6 +15,8 @@ const userName = ref("");
     <AppFooter appName="Code Collab" :year="2026" class="app-footer" />
     <AssistantPanel class="app-assistant" />
     <TextEditor class="app-editor" />
+    <ClickCounter :initial="5" @inc="(n) => console.log(`teller: ${n}`)" />
+    <ClickCounter :initial="10" />
   </div>
 </template>
 
