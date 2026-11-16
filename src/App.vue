@@ -1,11 +1,33 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { ref } from "vue";
+import AppHeader from "./AppHeader.vue";
+import AppFooter from "./AppFooter.vue";
+import AssistantPanel from "./AssistantPanel.vue";
+import TextEditor from "./TextEditor.vue";
+
+const userName = ref("");
+</script>
 
 <template>
-  <h1>You did it!</h1>
-  <p>
-    Visit <a href="https://vuejs.org/" target="_blank" rel="noopener">vuejs.org</a> to read the
-    documentation
-  </p>
+  <div class="app-layout">
+    <AppHeader v-model:user-name="userName" class="app-header" />
+    <AppFooter appName="Code Collab" :year="2026" class="app-footer" />
+    <AssistantPanel class="app-assistant" />
+    <TextEditor class="app-editor" />
+  </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.app-layout {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  grid-template-rows: auto 1fr auto;
+  min-height: 100vh;
+  gap: 1px;
+  background: #ddd;
+}
+.app-header,
+.app-footer {
+  grid-column: 1 / -1;
+}
+</style>
