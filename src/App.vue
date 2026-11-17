@@ -14,7 +14,7 @@ const userName = ref("");
     <AppHeader v-model:user-name="userName" class="app-header" />
     <AppFooter appName="Code Collab" :year="2026" class="app-footer" />
     <AssistantPanel class="app-assistant" />
-    <TextEditor class="app-editor" />
+    <TextEditor class="app-editor" user-name="Sohaila" />
     <ClickCounter :initial="5" @inc="(n) => console.log(`teller: ${n}`)" />
     <ClickCounter :initial="10" />
   </div>
