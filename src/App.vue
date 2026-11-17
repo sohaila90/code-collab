@@ -1,17 +1,26 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, computed, watch } from "vue";
 import AppHeader from "./AppHeader.vue";
 import AppFooter from "./AppFooter.vue";
 import AssistantPanel from "./AssistantPanel.vue";
 import TextEditor from "./TextEditor.vue";
 import ClickCounter from "./ClickCounter.vue";
 
-const userName = ref("");
+const userName = ref(localStorage.getItem("brukernavn") ?? "");
+
+watch(userName, (ny, gammel) => {
+  localStorage.setItem("brukernavn", ny);
+  console.log(`endret fra "${gammel}" til "${ny}"`);
+});
+
+const greeting = computed(() => {
+  return userName.value ? `Hei, ${userName.value}` : "Hei, ukjent";
+});
 </script>
 
 <template>
   <div class="app-layout">
-    <AppHeader v-model:user-name="userName" class="app-header" />
+    <AppHeader v-model:user-name="userName" class="app-header"> {{ greeting }}</AppHeader>
     <AppFooter appName="Code Collab" :year="2026" class="app-footer" />
     <AssistantPanel class="app-assistant" />
     <TextEditor class="app-editor" user-name="Sohaila" />

@@ -1,10 +1,13 @@
 <script setup lang="ts">
-import { ref, computed } from "vue";
+import { ref, computed, watch } from "vue";
 import EditorToolbar from "./EditorToolbar.vue";
 
 defineProps<{ userName: string }>();
 
-const text = ref("");
+const text = ref(localStorage.getItem("utkast") ?? "");
+watch(text, (ny) => {
+  localStorage.setItem("utkast", ny);
+});
 const charCount = computed(() => text.value.length);
 </script>
 
