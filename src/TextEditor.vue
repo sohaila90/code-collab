@@ -2,7 +2,7 @@
 import { ref, computed, watch } from "vue";
 import EditorToolbar from "./EditorToolbar.vue";
 
-defineProps<{ userName: string }>();
+defineProps<{ userName: string; appName: string }>();
 
 const text = ref(localStorage.getItem("utkast") ?? "");
 watch(text, (ny) => {
@@ -13,7 +13,7 @@ const charCount = computed(() => text.value.length);
 
 <template>
   <section>
-    <EditorToolbar :user-name="userName" :char-count="charCount" />
+    <EditorToolbar :user-name="userName" :char-count="charCount" :app-name="appName" />
     <textarea v-model="text" placeholder="Skriv koden din her.." />
   </section>
 </template>
