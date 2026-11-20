@@ -22,7 +22,7 @@ const greeting = computed(() => {
   <div class="app-layout">
     <AppHeader v-model:user-name="userName" class="app-header"> {{ greeting }}</AppHeader>
     <AppFooter appName="Code Collab" :year="2026" class="app-footer" />
-    <AssistantPanel class="app-assistant" />
+    <AssistantPanel :userName="userName" class="app-assistant" />
     <TextEditor class="app-editor" user-name="Sohaila" app-name="hallo" />
     <ClickCounter :initial="5" @inc="(n) => console.log(`teller: ${n}`)" />
     <ClickCounter :initial="10" />
